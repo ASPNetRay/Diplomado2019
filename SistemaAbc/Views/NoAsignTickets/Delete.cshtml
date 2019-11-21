@@ -1,0 +1,68 @@
+﻿@model ServiciosABC.Objetos.TicketNoAsign
+
+@{
+    ViewBag.Title = "Cerrar Ticket";
+}
+
+<h2>Completar</h2>
+
+<h3>Favor colocar comentario</h3>
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaSolicitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaSolicitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soporteAsignado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soporteAsignado)
+        </dd>
+        <div class="form-group">
+            @Html.LabelFor(model => model.InfAdicional, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InfAdicional, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InfAdicional, "", new { @class = "text-danger" })
+            </div>
+
+
+    </dl>
+
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <input type="submit" value="Cerrar" class="btn btn-default" />
+
+    </div>
+}
+<div>
+    @Html.ActionLink("Volver", "ListTicketsPending")
+</div>
+
+

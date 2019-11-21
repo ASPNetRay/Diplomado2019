@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ServiciosABC.Objetos.Tickets>
+
+@{
+    ViewBag.Title = "Tickets Asignados";
+}
+
+<h2>Lista de Tickets</h2>
+
+<p>
+    @Html.ActionLink("Crear Nueva Solicitud", "Create")
+</p>
+<table class="table table-sm table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaSolicitud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soporteAsignado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InfAdicional)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaSolicitud)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soporteAsignado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InfAdicional)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar", "Edit", new { id = item.codigo }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.codigo }) |
+                    @Html.ActionLink("Cerrar", "Delete", new { id = item.codigo })
+                </td>
+            </tr>
+        }
+
+</table>
